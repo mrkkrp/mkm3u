@@ -1,4 +1,4 @@
-# m3u Playlist Generator
+# Playlist Generator
 
 Call it from the root directory and it will traverse it and print names of
 all recognized audio files. All files and directories are alphabetically
@@ -12,8 +12,8 @@ Copy `mkm3u` file into directory that is in your `PATH` environment
 variable. I strongly recommend using of `~/bin/` directory for this sort of
 scripts.
 
-Create `~/bin/` directory if it doesn't exist already. Copy file `pdf` into
-it and change file mode, so you can execute it:
+Create `~/bin/` directory if it doesn't exist already. Copy file `mkm3u`
+into it and change file mode, so you can execute it:
 
 ```
 $ cd bin
