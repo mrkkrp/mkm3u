@@ -1,0 +1,67 @@
+#!/usr/bin/env python
+#
+# Script to generate playlists.
+#
+# Call it from the root directory and it will traverse it and print names of
+# all recognized audio files. All files and directories are alphabetically
+# sorted and relative paths are used. Alternatively, you can specify name of
+# directory that you want to traverse as the first argument. Use redirection
+# of output to create playlist file.
+#
+# Examples:
+#
+# mkm3u > playlist.m3u8
+# mkm3u path/to/some/dir > playlist.m3u8
+#
+# Once such a file is created, you can open it and edit as you wish.
+#
+# Copyright © 2015 Mark Karpov <markkarpov@openmailbox.org>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+import os
+import sys
+
+# All recognized audio formats their corresponding extensions:
+
+aexts = frozenset(
+    { 'aac'    # Advanced Audio Coding
+    , 'aif'    # Audio Interchange File Format
+    , 'aifc'   # Audio Interchange File Format
+    , 'aiff'   # Audio Interchange File Format
+    , 'ape'    # Monkey's Audio
+    , 'flac'   # Free Lossless Audio Codec
+    , 'm4a'    # Advanced Audio Coding
+    , 'm4p'    # Advanced Audio Coding
+    , 'mp3'    # MPEG Layer 3
+    , 'mp4'    # Advanced Audio Coding
+    , 'wav'    # Microsoft Wave
+    , 'wma' }) # Windows Media Audio 9 Lossless
+
+# Traverse recursively either current working directory or specified
+# directory and print names of files that has extensions specified in
+# ‘aexts’.
+
+root = sys.argv[1] if sys.argv[1:] else os.getcwd()
+
+for local, dirs, files in os.walk(root) :
+    for f in [f for f in sorted(files) if os.path.splitext(f)[1][1:] in aexts] :
+        print(os.path.join(
+            os.path.relpath(local, root) if local != root else "", f))
