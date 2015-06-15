@@ -8,6 +8,8 @@ of output to create playlist file.
 
 ## Recommended Installation Method
 
+This is a Python 3 script, you will need Python 3 installed to run it.
+
 Copy `mkm3u` file into directory that is in your `PATH` environment
 variable. I strongly recommend using of `~/bin/` directory for this sort of
 scripts.
