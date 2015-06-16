@@ -35,7 +35,7 @@ Some rather trivial examples:
 
 ```
 mkm3u > playlist.m3u
-mkm3u path/to/some/dir > playlist.m3u
+mkm3u path/to/some/dir > path/to/some/dir/playlist.m3u
 ```
 
 Once such a file is created, you can open it and edit as you wish.
