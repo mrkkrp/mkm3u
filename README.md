@@ -16,6 +16,8 @@ To install the software `cd` into the repository and execute the following:
 $ sudo bash install.sh
 ```
 
+You can uninstall the script with help of `uninstall.sh`.
+
 ## Examples
 
 Some rather trivial examples:
