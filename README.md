@@ -13,7 +13,7 @@ This is a Python 3 script, you will need Python 3 installed to run it.
 To install the software `cd` into the repository and execute the following:
 
 ```
-$ sudo bash install.sh
+# bash install.sh
 ```
 
 You can uninstall the script with help of `uninstall.sh`.
