@@ -61,7 +61,7 @@ aexts = frozenset(
 
 root = sys.argv[1] if sys.argv[1:] else os.getcwd()
 
-for local, dirs, files in os.walk(root) :
-    for f in [f for f in sorted(files) if os.path.splitext(f)[1][1:] in aexts] :
+for local, dirs, files in os.walk(root):
+    for f in [f for f in sorted(files) if os.path.splitext(f)[1][1:] in aexts]:
         print(os.path.join(
-            os.path.relpath(local, root) if local != root else "", f))
+            os.path.relpath(local, root) if local != root else '', f))
