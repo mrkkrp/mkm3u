@@ -18,16 +18,23 @@ To install the software `cd` into the repository and execute the following:
 
 You can uninstall the script with help of `uninstall.sh`.
 
-## Examples
+## Documentation
 
-Some rather trivial examples:
+`mkm3u` comes with its own man page. Here is short synopsis:
 
 ```
-mkm3u > playlist.m3u
-mkm3u path/to/some/dir > path/to/some/dir/playlist.m3u
-```
+usage: mkm3u [-h] [--license] [--version] [DIR]
 
-Once such a file is created, you can open it and edit as you wish.
+Generate m3u playlist
+
+positional arguments:
+  DIR         directory to scan
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --license   show program's license and exit
+  --version   show program's version number and exit
+```
 
 ## License
 
