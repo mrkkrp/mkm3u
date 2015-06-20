@@ -3,8 +3,8 @@
 Call it from the root directory and it will traverse it and print names of
 all recognized audio files. All files and directories are alphabetically
 sorted and relative paths are used. Alternatively, you can specify name of
-directory that you want to traverse as the first argument. Use redirection
-of output to create playlist file.
+directory that you want to traverse. Use redirection of output to create
+playlist file.
 
 ## Installation
 
