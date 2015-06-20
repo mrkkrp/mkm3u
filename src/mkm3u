@@ -36,12 +36,36 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import os
-import sys
+import argparse, os, sys
 
-# All recognized audio formats their corresponding extensions:
+# Constants and other useful values
 
-aexts = frozenset(
+version = '0.1.0'
+description = 'Generate m3u playlist'
+license = """mkm3u — generate m3u playlist
+
+Copyright © 2015 Mark Karpov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+"""
+
+aexts = frozenset( # recognized audio formats and corresponding extensions:
     { 'aac'    # Advanced Audio Coding
     , 'aif'    # Audio Interchange File Format
     , 'aifc'   # Audio Interchange File Format
@@ -55,13 +79,27 @@ aexts = frozenset(
     , 'wav'    # Microsoft Wave
     , 'wma' }) # Windows Media Audio 9 Lossless
 
+parser = argparse.ArgumentParser(description=description)
+parser.add_argument('dir', metavar='DIR', nargs='?', default=os.getcwd(),
+                    help='directory to scan')
+parser.add_argument('--license', action='store_true', dest='show_license',
+                    help="show program's license and exit")
+parser.add_argument('--version', action='version',
+                    version='%(prog)s ' + version)
+
+args = parser.parse_args()
+
+# Execution starts here, show license if user wants to see it.
+
+if args.show_license:
+    print(license)
+    exit(0)
+
 # Traverse recursively either current working directory or specified
 # directory and print names of files that has extensions specified in
 # ‘aexts’.
 
-root = sys.argv[1] if sys.argv[1:] else os.getcwd()
-
-for local, dirs, files in os.walk(root):
+for local, dirs, files in os.walk(args.dir):
     for f in [f for f in sorted(files) if os.path.splitext(f)[1][1:] in aexts]:
         print(os.path.join(
-            os.path.relpath(local, root) if local != root else '', f))
+            os.path.relpath(local, args.dir) if local != args.dir else '', f))
