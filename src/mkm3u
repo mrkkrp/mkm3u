@@ -77,7 +77,8 @@ aexts = frozenset( # recognized audio formats and corresponding extensions:
     , 'mp3'    # MPEG Layer 3
     , 'mp4'    # Advanced Audio Coding
     , 'wav'    # Microsoft Wave
-    , 'wma' }) # Windows Media Audio 9 Lossless
+    , 'wma'    # Windows Media Audio 9 Lossless
+    , 'wv' })  # WavPack
 
 parser = argparse.ArgumentParser(description=description)
 parser.add_argument('dir', metavar='DIR', nargs='?', default=os.getcwd(),
