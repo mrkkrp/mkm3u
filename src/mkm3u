@@ -101,6 +101,7 @@ if args.show_license:
 # ‘aexts’.
 
 for local, dirs, files in os.walk(args.dir):
+    dirs.sort()
     for f in [f for f in sorted(files) if os.path.splitext(f)[1][1:] in aexts]:
         print(os.path.join(
             os.path.relpath(local, args.dir) if local != args.dir else '', f))
