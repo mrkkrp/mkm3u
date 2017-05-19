@@ -3,7 +3,7 @@
 Call it from the root directory and it will traverse it and print names of
 all recognized audio files. All files and directories are alphabetically
 sorted and relative paths are used. Alternatively, you can specify name of
-directory that you want to traverse. Use redirection of output to create
+directory that you want to traverse. Use redirection of output to create a
 playlist file.
 
 ## Installation
@@ -38,6 +38,6 @@ optional arguments:
 
 ## License
 
-Copyright © 2015 Mark Karpov
+Copyright © 2015–2017 Mark Karpov
 
 Distributed under MIT License.
